@@ -1,0 +1,15 @@
+<class package="fr.jah.codegen.sample" xmlns="http://www.jah.fr/codegen/">
+	<interface name="SampleInterface" visibility="public">
+		<method name="SampleMethod" visibility="public" return="void">
+			<parameter name="SampleParam" type="string"></parameter>
+		</method>
+		<method name="SampleAnnotatedMethod" visibility="public"
+			return="int">
+			<parameter name="SampleParam" type="string"></parameter>
+			<annotation name="SampleAnnotation">
+				<attribute name="SampleAttribute" value="sample-value"
+					type="int"></attribute>
+			</annotation>
+		</method>
+	</interface>
+</class>

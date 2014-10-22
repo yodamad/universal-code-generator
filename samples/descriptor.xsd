@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.jah.fr/codegen/"
+	targetNamespace="http://www.jah.fr/codegen/" elementFormDefault="qualified">
+	<element name="class" type="tns:Class"></element>
+
+	<complexType name="Class">
+		<sequence>
+			<choice>
+				<element name="interface" type="tns:Interface"
+					maxOccurs="1" minOccurs="0">
+				</element>
+			</choice>
+			<choice><element name="enum" type="tns:Enum" maxOccurs="1" minOccurs="0">
+			</element></choice>
+		</sequence>
+		<attribute name="package" type="string"></attribute>
+	</complexType>
+	
+    <complexType name="Interface">
+    	<sequence>
+    		<element name="method" type="tns:Method"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="visibility" type="string"></attribute>
+    </complexType>
+
+    <complexType name="Method">
+    	<sequence>
+    		<element name="parameter" type="tns:Parameter" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="annotation" type="tns:Annotation" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="visibility">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="public"></enumeration>
+    				<enumeration value="private"></enumeration>
+    				<enumeration value="protected"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    	<attribute name="return">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="int"></enumeration>
+    				<enumeration value="char"></enumeration>
+    				<enumeration value="string"></enumeration>
+    				<enumeration value="bool"></enumeration>
+    				<enumeration value="void"></enumeration>
+    				<enumeration value="short"></enumeration>
+    				<enumeration value="long"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    </complexType>
+
+    <complexType name="Parameter">
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="type">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="int"></enumeration>
+    				<enumeration value="char"></enumeration>
+    				<enumeration value="long"></enumeration>
+    				<enumeration value="short"></enumeration>
+    				<enumeration value="long"></enumeration>
+    				<enumeration value="string"></enumeration>
+    				<enumeration value="bool"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    </complexType>
+
+    <complexType name="Annotation">
+    	<sequence>
+    		<element name="attribute" type="tns:Attribute" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="name" type="string"></attribute>
+    </complexType>
+
+    <complexType name="Attribute">
+    	<sequence>
+    		<element name="annotation" type="tns:Annotation" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="type">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="int"></enumeration>
+    				<enumeration value="short"></enumeration>
+    				<enumeration value="long"></enumeration>
+    				<enumeration value="char"></enumeration>
+    				<enumeration value="string"></enumeration>
+    				<enumeration value="bool"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    	<attribute name="value" type="string"></attribute>
+    </complexType>
+    
+    <complexType name="Enum">
+    	<sequence>
+    		<element name="attribute" type="tns:Attribute" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="visibility">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="public"></enumeration>
+    				<enumeration value="private"></enumeration>
+    				<enumeration value="protected"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    </complexType>
+</schema>
