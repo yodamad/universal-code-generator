@@ -8,19 +8,24 @@
 			<element name="style" type="tns:Style" maxOccurs="1"
 				minOccurs="1">
 			</element>
-			<element name="code" type="tns:Code" maxOccurs="1" minOccurs="1"></element>
+			<element name="code" type="tns:Code" maxOccurs="1"
+				minOccurs="1">
+			</element>
 		</sequence>
 		<attribute name="name" type="string"></attribute>
+		<attribute name="fileextension" type="string"></attribute>
 	</complexType>
 
-    <complexType name="Style">
+	<complexType name="Style">
     	<sequence>
     		<element name="indent" type="tns:Indentation"></element>
     		<element name="block" type="tns:Block"></element>
     		<element name="doc" type="tns:Documentation"></element>
     		<element name="instruction" type="tns:Instruction"></element>
+    		<element name="method" type="tns:Method"></element>
+    		<element name="class" type="tns:Class"></element>
     	</sequence>
-    </complexType>
+	</complexType>
     
     <complexType name="Code">
     	<sequence>
@@ -67,5 +72,22 @@
     <complexType name="Mapping">
     	<attribute name="name" type="string"></attribute>
     	<attribute name="value" type="string"></attribute>
+    </complexType>
+
+    <complexType name="Method">
+    	<attribute name="style">
+    		<simpleType>
+    			<restriction base="string">
+    				<enumeration value="lowercase"></enumeration>
+    				<enumeration value="uppercase"></enumeration>
+    				<enumeration value="lowercamelcase"></enumeration>
+    				<enumeration value="uppercamelcase"></enumeration>
+    			</restriction>
+    		</simpleType>
+    	</attribute>
+    </complexType>
+
+    <complexType name="Class">
+    	<attribute name="style" type="string"></attribute>
     </complexType>
 </schema>

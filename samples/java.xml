@@ -1,9 +1,11 @@
-<language name="java"  xmlns="http://www.jah.fr/codegen/">
+<language name="java" fileextension=".java" xmlns="http://www.jah.fr/codegen/">
 	<style>
 		<indent char=" " occurence="4"></indent>
 		<block start="{" end="}" newline="false"></block>
 		<doc start="/**" end="*/"></doc>
 		<instruction end=";"></instruction>
+		<method style="lowercamelcase"></method>
+		<class style="uppercamelcase"></class>
 	</style>
 	<code>
 		<visibilities default="public">
