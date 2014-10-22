@@ -1,10 +1,10 @@
 <class package="fr.jah.codegen.sample" xmlns="http://www.jah.fr/codegen/">
 	<interface name="SampleInterface" visibility="public">
-		<method name="SampleMethod" visibility="public" return="void">
+		<method name="SampleMethod" visibility="public" return="void" doc="This is a sample method.">
 			<parameter name="SampleParam" type="string"></parameter>
 		</method>
 		<method name="SampleAnnotatedMethod" visibility="public"
-			return="int">
+			return="int" doc="This is a sample method with an annotation.">
 			<parameter name="SampleParam" type="string"></parameter>
 			<annotation name="SampleAnnotation">
 				<attribute name="SampleAttribute" value="sample-value"

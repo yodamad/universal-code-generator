@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.jah.fr/codegen/"
+	targetNamespace="http://www.jah.fr/codegen/"  elementFormDefault="qualified">
+	<element name="language" type="tns:Language"></element>
+
+	<complexType name="Language">
+		<sequence>
+			<element name="style" type="tns:Style" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="code" type="tns:Code" maxOccurs="1" minOccurs="1"></element>
+		</sequence>
+		<attribute name="name" type="string"></attribute>
+	</complexType>
+
+    <complexType name="Style">
+    	<sequence>
+    		<element name="indent" type="tns:Indentation"></element>
+    		<element name="block" type="tns:Block"></element>
+    		<element name="doc" type="tns:Documentation"></element>
+    		<element name="instruction" type="tns:Instruction"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="Code">
+    	<sequence>
+    		<element name="visibilities" type="tns:Visibilities"></element>
+    		<element name="types" type="tns:Types"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="Indentation">
+    	<attribute name="char" type="string"></attribute>
+    	<attribute name="occurence" type="int"></attribute>
+    </complexType>
+
+    <complexType name="Block">
+    	<attribute name="start" type="string"></attribute>
+    	<attribute name="end" type="string"></attribute>
+    	<attribute name="newline" type="boolean"></attribute>
+    </complexType>
+
+    <complexType name="Documentation">
+    	<attribute name="start" type="string"></attribute>
+    	<attribute name="end" type="string"></attribute>
+    </complexType>
+
+    <complexType name="Instruction">
+    	<attribute name="end" type="string"></attribute>
+    </complexType>
+
+    <complexType name="Visibilities">
+    	<sequence>
+    		<element name="mapping" type="tns:Mapping"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    	</sequence>
+    	<attribute name="default" type="string"></attribute>
+    </complexType>
+
+    <complexType name="Types">
+    	<sequence>
+    		<element name="mapping" type="tns:Mapping" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="Mapping">
+    	<attribute name="name" type="string"></attribute>
+    	<attribute name="value" type="string"></attribute>
+    </complexType>
+</schema>

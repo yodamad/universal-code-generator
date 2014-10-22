@@ -1,7 +1,7 @@
 <class package="fr.jah.codegen.sample" xmlns="http://www.jah.fr/codegen/">
 	<enum name="SampleEnum" visibility="public">
-		<attribute name="SampleAttribute" type="int"></attribute>
-		<attribute name="SampleAttributeWithAnnotation" type="string">
+		<attribute name="SampleAttribute" type="int" doc="Sample enum value."></attribute>
+		<attribute name="SampleAttributeWithAnnotation" type="string" doc="Sample enum value with an annotation.">
 			<annotation name="SampleAnnotation">
 				<attribute name="SampleAnnotationAttribute" value="sample-value"
 					type="string">

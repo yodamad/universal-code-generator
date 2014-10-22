@@ -28,8 +28,12 @@
 
     <complexType name="Method">
     	<sequence>
-    		<element name="parameter" type="tns:Parameter" maxOccurs="unbounded" minOccurs="0"></element>
-    		<element name="annotation" type="tns:Annotation" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="parameter" type="tns:Parameter"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="annotation" type="tns:Annotation"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
     	</sequence>
     	<attribute name="name" type="string"></attribute>
     	<attribute name="visibility">
@@ -54,8 +58,9 @@
     			</restriction>
     		</simpleType>
     	</attribute>
+    	<attribute name="doc" type="string"></attribute>
     </complexType>
-
+    
     <complexType name="Parameter">
     	<attribute name="name" type="string"></attribute>
     	<attribute name="type">
@@ -102,7 +107,9 @@
     
     <complexType name="Enum">
     	<sequence>
-    		<element name="attribute" type="tns:Attribute" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="attribute" type="tns:Attribute"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
     	</sequence>
     	<attribute name="name" type="string"></attribute>
     	<attribute name="visibility">
@@ -114,5 +121,6 @@
     			</restriction>
     		</simpleType>
     	</attribute>
+    	<attribute name="doc" type="string"></attribute>
     </complexType>
 </schema>
