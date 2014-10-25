@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.jah.fr/codegen/"
+	targetNamespace="http://www.jah.fr/codegen/" elementFormDefault="qualified">
+	<element name="source" type="tns:Source"></element>
+
+	<complexType name="Source">
+		<sequence>
+			<element name="location" type="tns:MetaData" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="imports" type="tns:MetaData" maxOccurs="unbounded"
+				minOccurs="0"></element>
+			<element name="object" type="tns:Object" maxOccurs="1"
+				minOccurs="0">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Object">
+		<sequence>
+			<element name="meta" type="tns:MetaData"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="interfaces" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+			<element name="attribute" type="tns:Attribute"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+			<element name="method" type="tns:Method"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="name" type="string"></attribute>
+		<attribute name="visibility">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="public"></enumeration>
+					<enumeration value="private"></enumeration>
+					<enumeration value="protected"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="doc" type="string"></attribute>
+		<attribute name="type" type="string"></attribute>
+		<attribute name="extension" type="string"></attribute>
+	</complexType>
+
+	<complexType name="Method">
+		<sequence>
+			<element name="meta" type="tns:MetaData" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+			<element name="parameter" type="tns:Parameter" maxOccurs="unbounded"
+				minOccurs="0">
+			</element>
+		</sequence>
+        <attribute name="visibility">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="public"></enumeration>
+					<enumeration value="private"></enumeration>
+					<enumeration value="protected"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+        <attribute name="return">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="int"></enumeration>
+					<enumeration value="char"></enumeration>
+					<enumeration value="string"></enumeration>
+					<enumeration value="bool"></enumeration>
+					<enumeration value="void"></enumeration>
+					<enumeration value="short"></enumeration>
+					<enumeration value="long"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+        <attribute name="name" type="string"></attribute>		<attribute name="doc" type="string"></attribute>
+	</complexType>
+
+	<complexType name="Parameter">
+		<attribute name="name" type="string"></attribute>
+		<attribute name="type">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="int"></enumeration>
+					<enumeration value="char"></enumeration>
+					<enumeration value="long"></enumeration>
+					<enumeration value="short"></enumeration>
+					<enumeration value="long"></enumeration>
+					<enumeration value="string"></enumeration>
+					<enumeration value="bool"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+
+	<complexType name="Attribute">
+		<sequence>
+			<element name="meta" type="tns:Annotation"
+				maxOccurs="unbounded" minOccurs="0">
+			</element>
+		</sequence>
+		<attribute name="visibility" type="string"></attribute>
+		<attribute name="type">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="int"></enumeration>
+					<enumeration value="short"></enumeration>
+					<enumeration value="long"></enumeration>
+					<enumeration value="char"></enumeration>
+					<enumeration value="string"></enumeration>
+					<enumeration value="bool"></enumeration>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="name" type="string"></attribute>
+		<attribute name="value" type="string"></attribute>
+		<attribute name="getter" type="string"></attribute>
+		<attribute name="setter" type="string"></attribute>
+		<attribute name="doc" type="string"></attribute>
+	</complexType>
+
+	<complexType name="MetaData">
+		<attribute name="level" type="string"></attribute>
+	</complexType>
+</schema>

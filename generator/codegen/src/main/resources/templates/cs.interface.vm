@@ -1,0 +1,26 @@
+#foreach ($import in $foo.imports)
+using $import;
+#end
+
+namespace $foo.namespace;
+{
+    /// <summary>
+    /// $foo.description.
+    /// </summary>
+    $foo.visibility $foo.type I$foo.name #if($foo.interfaces && !$foo.interfaces.isEmpty()): #foreach($interface in $foo.interfaces)$interface#if($foreach.hasNext), #end#end#end {
+
+#foreach ($method in $foo.methods) 
+        /// <summary>
+        /// $method.description.
+        /// </summary>
+    #foreach ($param in $method.params)
+    /// <param name="$param.name">$param.doc</param>
+    #end
+  #if ($method.returning)  /// <returns>$method.returning.doc</returns>
+    #end
+    $method.returning.type $method.name (#foreach ($param in $method.params)$param.type $param.name#if($param.value) = $param.value#end#if ($foreach.hasNext), #end#end);
+	
+#end
+    }
+}
+ 

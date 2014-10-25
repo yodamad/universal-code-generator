@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.jah.fr/codegen/java"
+	targetNamespace="http://www.jah.fr/codegen/java" xmlns:p="http://www.jah.fr/codegen/">
+	<import schemaLocation="global-descriptor.xsd" id="global"
+		namespace="http://www.jah.fr/codegen/" />
+
+	<complexType name="PackageMetaData">
+		<complexContent>
+			<extension base="p:MetaData">
+				<attribute name="dictionary-ref" type="string"></attribute>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ImportMetaData">
+		<complexContent>
+			<extension base="p:MetaData">
+				<attribute name="dictionary-ref" type="string"></attribute>
+				<attribute name="value" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="AnnotationMetaData">
+		<complexContent>
+			<extension base="p:MetaData">
+				<sequence>
+					<element name="params" type="p:Parameter"></element>
+				</sequence>
+				<attribute name="dictionary-ref" type="string"></attribute>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="InterfaceMetaData">
+		<complexContent>
+			<extension base="p:MetaData">
+				<attribute name="dictionary-ref" type="string"></attribute>
+				<attribute name="name" type="string"></attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+</schema>
