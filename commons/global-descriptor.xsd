@@ -46,14 +46,14 @@
 
 	<complexType name="Method">
 		<sequence>
-			<element name="meta" type="tns:MetaData" maxOccurs="unbounded"
-				minOccurs="0">
+			<element name="meta" type="tns:MetaData"
+				maxOccurs="unbounded" minOccurs="0">
 			</element>
-			<element name="parameter" type="tns:Parameter" maxOccurs="unbounded"
-				minOccurs="0">
+			<element name="parameter" type="tns:Parameter"
+				maxOccurs="unbounded" minOccurs="0">
 			</element>
 		</sequence>
-        <attribute name="visibility">
+		<attribute name="visibility">
 			<simpleType>
 				<restriction base="string">
 					<enumeration value="public"></enumeration>
@@ -62,6 +62,7 @@
 				</restriction>
 			</simpleType>
 		</attribute>
+        <attribute name="type" type="string"></attribute>
         <attribute name="return">
 			<simpleType>
 				<restriction base="string">
@@ -75,7 +76,8 @@
 				</restriction>
 			</simpleType>
 		</attribute>
-        <attribute name="name" type="string"></attribute>		<attribute name="doc" type="string"></attribute>
+		<attribute name="name" type="string"></attribute>
+		<attribute name="doc" type="string"></attribute>
 	</complexType>
 
 	<complexType name="Parameter">
@@ -102,6 +104,9 @@
 			</element>
 		</sequence>
 		<attribute name="visibility" type="string"></attribute>
+
+        <attribute name="scope" type="string"></attribute>
+        <attribute name="access" type="string"></attribute>
 		<attribute name="type">
 			<simpleType>
 				<restriction base="string">
@@ -119,6 +124,7 @@
 		<attribute name="getter" type="string"></attribute>
 		<attribute name="setter" type="string"></attribute>
 		<attribute name="doc" type="string"></attribute>
+
 	</complexType>
 
 	<complexType name="MetaData">
