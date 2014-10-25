@@ -1,29 +1,33 @@
 package $foo.namespace;
 
 #foreach ($import in $foo.imports)
-	import $import;
+import $import;
 #end
 
+/**
+  * $foo.description.
+  */
 #foreach ($annotation in $foo.annotations)
-@$annotation.name#if (!$foo.annotations.params.isEmpty()) (#foreach ($param in $annotation.params) $param.name = $param.value #if ($foreach.hasNext), #end #end) #end
+@$annotation.name#if($annotation.params.size() > 0)(#foreach($param in $annotation.params)$param.name = $param.value#if ($foreach.hasNext), #end#end)
+#end#end
+
+$foo.visibility $foo.type $foo.name #if($foo.interfaces && !$foo.interfaces.isEmpty())implements #foreach($interface in $foo.interfaces)$interface#if($foreach.hasNext), #end#end#end #if($foo.extension)extends $foo.extension#end {
+
+#foreach ($method in $foo.methods) 
+    /**
+      * $method.description.
+    #foreach ($param in $method.params)
+  * @param $param.name $param.doc
+    #end
+  #if ($method.returning)* @return $method.returning.doc
+    #end
+  */
+#foreach ($annotation in $method.annotations)
+    @$annotation.name#if ($annotation.params.size() > 0)(#foreach($param in $annotation.params)$param.name = $param.value#if ($foreach.hasNext),#end#end)#end
+
 #end
-$foo.visibility $foo.type $foo.name #if($foo.interfaces && !$foo.interfaces.isEmpty()) implements #foreach($interface in $foo.interfaces)$interface #if($foreach.hasNext), #end#end#end #if($foo.extension) extends $foo.extension#end {
+    $method.visibility $method.returning.type $method.name (#foreach ($param in $method.params)$param.type $param.name#if ($foreach.hasNext), #end#end);
 
-	#foreach ($method in $foo.methods) 
-	/**
-	  * $method.description.
-	  #foreach ($param in $method.params)
-	  * @param $param.name $param.doc
-	  #end
-	  #if ($method.returning)
-	  * @return $method.returning.doc
-	  #end
-	  */
-	#foreach ($annotation in $method.annotations)
-	@$annotation.name#if (!$annotations.params.isEmpty()) (#foreach ($param in $annotation.params) $param.name = $param.value #if ($foreach.hasNext), #end #end) #end
-	#end
-	$method.visibility $method.returning.type $method.name (#foreach ($param in $method.params) $param.type $param.name #if ($foreach.hasNext), #end #end);
-	#end
-
+#end
 }
  
