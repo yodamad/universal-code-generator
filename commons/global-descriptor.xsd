@@ -5,8 +5,8 @@
 
 	<complexType name="Source">
 		<sequence>
-			<element name="location" type="tns:MetaData" maxOccurs="1"
-				minOccurs="1">
+			<element name="locations" type="tns:Locations"
+				maxOccurs="1" minOccurs="1">
 			</element>
 			<element name="imports" type="tns:MetaData" maxOccurs="unbounded"
 				minOccurs="0"></element>
@@ -16,12 +16,18 @@
 		</sequence>
 	</complexType>
 
+	<complexType name="Locations">
+		<sequence>
+			<element name="location" type="tns:MetaData" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
 	<complexType name="Object">
 		<sequence>
 			<element name="meta" type="tns:MetaData"
 				maxOccurs="unbounded" minOccurs="0">
 			</element>
-			<element name="interfaces" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+			<element name="interfaces" type="tns:MetaData" maxOccurs="unbounded" minOccurs="0"></element>
 			<element name="attribute" type="tns:Attribute"
 				maxOccurs="unbounded" minOccurs="0">
 			</element>
@@ -99,7 +105,7 @@
 
 	<complexType name="Attribute">
 		<sequence>
-			<element name="meta" type="tns:Annotation"
+			<element name="meta" type="tns:MetaData"
 				maxOccurs="unbounded" minOccurs="0">
 			</element>
 		</sequence>
